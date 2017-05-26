@@ -1,0 +1,519 @@
+html,
+body {
+  height: 100%;
+  /*font-family: 'Arvo' !important;*/
+}
+
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
+.wrap > .container {
+  padding: 70px 15px 20px;
+}
+
+.footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+.not-set {
+  color: #c55;
+  font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  padding-left: 5px;
+}
+
+a.asc:after {
+  content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+  content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+  content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+  content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+  content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+  content: "\e156";
+}
+
+.grid-view th {
+  white-space: nowrap;
+}
+
+.hint-block {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+}
+
+.error-summary {
+  color: #a94442;
+  background: #fdf7f7;
+  border-left: 3px solid #eed3d7;
+  padding: 10px 20px;
+  margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+  padding: 15px;
+  border: none;
+}
+
+@media(max-width:767px) {
+  .nav li > form > button.logout {
+    display:block;
+    text-align: left;
+    width: 100%;
+    padding: 10px 15px;
+  }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+  text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+  outline: none;
+}
+.fields,.field{
+	padding:5px;
+}
+/* START FORM-GENERATOR */
+
+/*accordian start*/
+
+.demo {
+  background-color: #eee;
+  margin-top: 30px;
+  border: 1px solid #DADADA;
+}
+
+.panel-group .panel {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #EEEEEE;
+}
+
+.panel-default > .panel-heading {
+  padding: 0;
+  border-radius: 0;
+  color: #212121;
+  background-color: #FAFAFA;
+  border-color: #EEEEEE;
+}
+
+.panel-title {
+  font-size: 14px;
+}
+
+.panel-title > a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.more-less {
+  float: right;
+  color: #212121;
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #EEEEEE;
+}
+
+
+/*accordian end*/
+
+.default-value, .hidden-with, .column-dropdown, .d-format {
+  display: none;
+}
+
+.your-class {
+  margin: 10px 0px;
+}
+
+.save-btn {
+  float: right;
+  margin: 10px 0px;
+}
+
+select.field_type {
+ font-size: 16px;
+ width: 100%;
+ padding: 7px;
+ margin-top: 24px;
+}
+
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+div.tab {
+  float: left;
+  margin-top: 30px;
+  padding: 0px;
+     /* border: 1px solid #ccc;
+      background-color: #f1f1f1;
+      width: 30%;
+      height: 300px;*/
+    }
+
+    /* Style the buttons inside the tab */
+    div.tab button {
+      display: block;
+      background-color: #7FDE8D;
+      color: #fff;
+      padding: 22px 16px;
+      width: 100%;
+      border: 1px solid #DADADA;
+      outline: none;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    div.tab button:hover {
+      background-color: #7FDE8D;
+    }
+
+    /* Create an active/current "tab button" class */
+    div.tab button.active {
+      border: 1px solid #DADADA;
+      border-right: 4px solid black;
+      background-color: #7FDE8D;
+      color: #fff;
+    }
+
+    /* Style the tab content */
+  /*  .tabcontent {
+      float: left;
+      padding: 0px 12px;
+      border: 1px solid #ccc;
+      width: 70%;
+      border-left: none;
+      height: 300px;
+      }*/
+
+
+      .column-dropdown button.dropdown-toggle {
+        padding: 6px 28px;
+        margin-top: 23px;
+        width: 100%;
+        border: 1px solid #5BC0DE;
+        background-color: #5BC0DE;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      input#date {
+        padding: 4px 6px;
+        width: 100%;
+        font-size: 16px;
+        outline: none;
+      }
+
+      div#accordion {
+        clear: both;
+      }
+
+
+      /*style for form name field*/
+      .form-group {
+        margin-bottom: 0px;
+      }
+
+      .input {
+        text-align: center;
+        outline: none;
+        background-color: transparent;
+        border: 1px solid #CCC;
+        color: #555;
+        box-sizing: border-box;
+        font-family: 'Arvo';
+        font-size: 18px;
+        padding: 10px 0px;
+        position: relative;
+
+        &:focus {
+          outline: none;    
+        }
+      }
+
+      input::-webkit-input-placeholder {
+        color: #AAA;
+      }
+
+      input:focus::-webkit-input-placeholder {
+        color: #5bc0de;
+      }
+
+      .input:focus+.underline {
+        transform: scale(1);
+      }
+
+      .underline {
+        background-color: #5bc0de;
+        display: inline-block;
+        height: 2px;
+        left: 15px;
+        top: 46px;
+        position: absolute;
+        -webkit-transform: scale(0, 1);
+        transform: scale(0, 1);
+        -webkit-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+        width: 219px;
+      }
+
+      .save-btn button{
+        outline: none;
+        border-radius: 0px;
+      }
+
+      .form-control{
+        border-radius: 0px;
+        outline: none;
+      }
+
+      .form-control:focus {
+        box-shadow: none !important;
+        border-color: #ccc !important;
+      }
+
+      .form-group.cb.col-md-6 {
+        margin-top: 11px;
+      }
+
+      
+      /* Checkmark style starts */
+      @-moz-keyframes 
+      dothabottomcheck {  0% {
+       height: 0;
+     }
+     100% {
+       height: 14px;
+     }
+   }
+   @-webkit-keyframes 
+   dothabottomcheck {  0% {
+     height: 0;
+   }
+   100% {
+     height: 14px;
+   }
+ }
+ @keyframes 
+ dothabottomcheck {  0% {
+   height: 0;
+ }
+ 100% {
+   height: 14px;
+ }
+}
+@keyframes 
+dothatopcheck {  0% {
+ height: 0;
+}
+50% {
+ height: 0;
+}
+100% {
+ height: 30px;
+}
+}
+@-webkit-keyframes 
+dothatopcheck {  0% {
+ height: 0;
+}
+50% {
+ height: 0;
+}
+100% {
+ height: 30px;
+}
+}
+@-moz-keyframes 
+dothatopcheck {  0% {
+ height: 0;
+}
+50% {
+ height: 0;
+}
+100% {
+ height: 30px;
+}
+}
+
+input[type=checkbox] { 
+  display: none;
+}
+
+.check-box {
+  float: right;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: 2px solid rgb(242, 97, 97);
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-transition: border-color ease 0.2s;
+  -o-transition: border-color ease 0.2s;
+  -webkit-transition: border-color ease 0.2s;
+  transition: border-color ease 0.2s;
+  cursor: pointer;
+}
+
+.check-box::before,
+.check-box::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  height: 0;
+  width: 6px;
+  background-color: #7FDE8D;
+  display: inline-block;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  border-radius: 5px;
+  content: ' ';
+  -webkit-transition: opacity ease .5;
+  -moz-transition: opacity ease .5;
+  transition: opacity ease .5;
+}
+
+.check-box::before {
+  top: 21px;
+  left: 11px;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+.check-box::after {
+  top: 10px;
+  left: 0px;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+input[type=checkbox]:checked + .check-box,
+.check-box.checked { border-color: #7FDE8D; }
+
+input[type=checkbox]:checked + .check-box::after,
+.check-box.checked::after {
+  height: 50px;
+  -moz-animation: dothabottomcheck 0.2s ease 0s forwards;
+  -o-animation: dothabottomcheck 0.2s ease 0s forwards;
+  -webkit-animation: dothabottomcheck 0.2s ease 0s forwards;
+  animation: dothabottomcheck 0.2s ease 0s forwards;
+}
+
+input[type=checkbox]:checked + .check-box::before,
+.check-box.checked::before {
+  height: 120px;
+  -moz-animation: dothatopcheck 0.4s ease 0s forwards;
+  -o-animation: dothatopcheck 0.4s ease 0s forwards;
+  -webkit-animation: dothatopcheck 0.4s ease 0s forwards;
+  animation: dothatopcheck 0.4s ease 0s forwards;
+}
+
+/*text input*/
+
+.col-md-3 .form-group input[type="text"] {
+  padding: 10px;
+  border: solid 1px #c9c9c9;
+  transition: border 0.3s;
+}
+
+.col-md-3 .form-group input[type="text"]:focus,
+.col-md-3 .form-group input[type="text"].focus {
+  border: solid 3px #969696;
+}
+
+.select-options {
+  outline: none;
+  padding: 10px;
+  border: solid 1px #c9c9c9;
+  transition: border 0.3s;
+}
+
+.select-options:focus,
+.select-options.focus {
+  border: solid 3px #969696;
+}
+
+#date {
+  outline: none;
+  padding: 10px;
+  border: solid 1px #c9c9c9;
+  transition: border 0.3s;
+}
+
+#date:focus,
+#date.focus {
+  border: solid 3px #969696;
+}
+input.form-control.form-title {
+  border-radius: 5px;
+  font-size: 25px;
+  margin-left: -30px;
+  height: 45px;
+}
+input.form-control,select.form-control{
+	border-radius: 5px;
+}
+/* END FORM-GENERATOR */
