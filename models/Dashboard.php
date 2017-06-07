@@ -38,9 +38,11 @@ class Dashboard extends \yii\db\ActiveRecord
             [['dashboard_name', 'workspace_id','prefix'], 'required'],
             [['dashboard_name', 'pbix_file', 'description', 'models', 'report_id', 'form_data','dataset_id', 'datasource_id', 'gateway_id'], 'string'],
 			['prefix','validatePlain'],
-			['prefix','unique'],
+			['prefix','unique','except'=>'clone'],
             [['workspace_id'], 'integer'],
 			['file', 'file'],
+			['dashboard_name','string','on'=>'clone'],
+			
         ];
     }
 	
@@ -73,6 +75,7 @@ class Dashboard extends \yii\db\ActiveRecord
     {
         if ($this->validate()) {
             $this->file->saveAs('uploads/' . $this->file->baseName . '.' . $this->file->extension);
+			$this->template = 'uploads/' . $this->file->baseName . '.' . $this->file->extension;
             return true;
         } else {
             return false;
@@ -90,6 +93,6 @@ class Dashboard extends \yii\db\ActiveRecord
      */
     public function getReport()
     {
-        return $this->hasOne(Report::className(), ['r_id' => 'report_id']);
+        return $this->hasOne(Reports::className(), ['r_id' => 'report_id']);
     }
 }

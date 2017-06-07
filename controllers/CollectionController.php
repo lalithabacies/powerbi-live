@@ -3,16 +3,18 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\TestData;
-use app\models\search\TestData as TestDataSearch;
+use app\models\Collection;
+use app\models\search\Collection as CollectionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\Workspace;
+use app\models\Dataset;
+use app\models\Reports;
 /**
- * TestController implements the CRUD actions for TestData model.
+ * CollectionController implements the CRUD actions for Collection model.
  */
-class TestController extends Controller
+class CollectionController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +32,12 @@ class TestController extends Controller
     }
 
     /**
-     * Lists all TestData models.
+     * Lists all Collection models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TestDataSearch();
+        $searchModel = new CollectionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,11 +45,9 @@ class TestController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-	public function actionReport(){
-        return $this->render('report');		
-	}
+
     /**
-     * Displays a single TestData model.
+     * Displays a single Collection model.
      * @param integer $id
      * @return mixed
      */
@@ -59,16 +59,16 @@ class TestController extends Controller
     }
 
     /**
-     * Creates a new TestData model.
+     * Creates a new Collection model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new TestData();
+        $model = new Collection();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->data_id]);
+            return $this->redirect(['view', 'id' => $model->collection_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,7 +77,7 @@ class TestController extends Controller
     }
 
     /**
-     * Updates an existing TestData model.
+     * Updates an existing Collection model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +87,7 @@ class TestController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->data_id]);
+            return $this->redirect(['view', 'id' => $model->collection_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -96,35 +96,38 @@ class TestController extends Controller
     }
 
     /**
-     * Deletes an existing TestData model.
+     * Deletes an existing Collection model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
+	 * Deletes the workspace,dataset,reports that are linked to this collection.
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+		//$workspace = Workspace::findOne(['collection_id'=>$id]);
+		
+		//Workspace::findOne(['collection_id'=>$id])->delete();
+		//Dataset::findOne(['workspace_id'=>$workspace->w_id])->delete();	
+		//Reports::findOne(['workspace_id'=>$workspace->w_id])->delete();	
+		$this->findModel($id)->delete();		
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the TestData model based on its primary key value.
+     * Finds the Collection model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return TestData the loaded model
+     * @return Collection the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = TestData::findOne($id)) !== null) {
+        if (($model = Collection::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 	
-	public function actionFetchTables(){
-		
-	}
 }
