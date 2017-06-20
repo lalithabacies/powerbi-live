@@ -12,9 +12,11 @@ $this->title = 'Form-Generator:'.$model->dashboard_name;
     <div class="tab col-md-2">	
 		<?php 
 		$i=1;
+		if(!empty($tables))
+		{
 		foreach($tables as $name=>$table){ ?>
 		  <button class="tablinks" onclick="openTab(event, '<?=$name?>')" id="<?php echo $i==1?"defaultOpen":""?>"><?=$name?></button>
-		<?php $i++; } ?>
+		<?php $i++; }} ?>
     </div>		
 	<!-- Vertical Tabs Ends here -->
 
@@ -22,6 +24,7 @@ $this->title = 'Form-Generator:'.$model->dashboard_name;
 	<?php 
 	$i=1;
 	$form = ActiveForm::begin();
+	if(!empty($tables)){
 	foreach($tables as $name=>$fields){ ?>
     <div class="demo tabcontent col-md-10" id="<?=$name?>">
 	<?php  
@@ -144,7 +147,7 @@ $this->title = 'Form-Generator:'.$model->dashboard_name;
 
       </div><!-- demo -->
 		
-	<?php $i++; } ?>
+	<?php $i++; }} ?>
 	<div class="save-btn">
 	  <?= Html::submitButton( 'Save' , ['class' =>  'btn btn-success']) ?>
 	</div>

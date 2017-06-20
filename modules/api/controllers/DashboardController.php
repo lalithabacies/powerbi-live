@@ -10,7 +10,6 @@ use app\models\Dashboard as DashboardModel;
 use app\models\Workspace as WorkspaceModel;
 use app\models\Collection as CollectionModel;
 use app\models\Reports as ReportsModel;
-use app\models\Subscription as SubscriptionModel;
 use yii\web\UploadedFile;
 use app\models\User;
 use app\models\Customer;
@@ -101,20 +100,45 @@ class DashboardController extends ActiveController
 		}
 	}
 	
-	
 	/*
 	 * Action for getting update dashboard Form Generator Details
 	 * Params: $value which is the dashboard Form Generator value
 	 * Returns JSON
 	 */
-	Public function actionUpdateFormGenerator(){
-		$tablename = "2_Risk";
+	 // Pending Function
+	Public function actionUpdateDashboardData(){
+		
+		$tablename = $_POST['tablename'];
 		$tableSchema = Yii::$app->db->schema->getTableSchema($tablename);
 		if ($tableSchema === null) {
 			return ["Error"=>"Table Does Not Exits"];			
-		} else {
-			return ["Success"=>"Success Table processed"];
+		} else {					
+			$eq_id = json_decode($_POST['eq_id'],true);
+			$column_value = json_decode($_POST['column_value'],true);
 			
+			if(!empty($eq_id) && is_array($eq_id))
+			{
+				$connection = Yii::$app->getDb();
+				$checkststus = false;
+				unset($data);
+
+				foreach($eq_id as $key1=>$tmp)
+				{					
+				 $data = $column_value[$key1];
+				 
+				   $connection	->createCommand()
+					->update($tablename,$data, "eq_id=".$tmp." and eq_customer_id=".\Yii::$app->user->id)
+					->execute();
+				  $checkststus = true;	 
+				}
+				
+				if($checkststus == true)
+					return ["Success"=>"Successfully Updated Corresponding Values On Dashboard"];
+			} 
+			else 
+			{
+				return ["Error"=>"Something Went To Wrong Try Again"];
+			}			
 		}
 	}
 	
@@ -123,102 +147,36 @@ class DashboardController extends ActiveController
 	 * Params: $value which is the dashboard Form Generator value
 	 * Returns JSON
 	 */
-	 
-	Public function actionDeleteFormGenerator(){
-		$tablename = "2_Risk";
+	// Pending Function
+	Public function actionDeleteDashboardData(){
+		$tablename = $_POST['tablename'];
 		$tableSchema = Yii::$app->db->schema->getTableSchema($tablename);
 		if ($tableSchema === null) {
 			return ["Error"=>"Table Does Not Exits"];			
 		} else {
-			/* $columnNames = Yii::$app->db->schema->getTableSchema($tablename)->getColumnNames();		
-			return $columnNames; */
+						
+			$eq_id = json_decode($_POST['eq_id'],true);
 			
+			if(!empty($eq_id) && is_array($eq_id))
+			{
+				$connection = Yii::$app->getDb();
+				$checkststus = false;	
+				foreach($eq_id as $tmp)
+				{
+				  $connection	->createCommand()
+					->delete($tablename,  "eq_id=".$tmp." and eq_customer_id=".\Yii::$app->user->id)
+					->execute();
+				  $checkststus = true;		
+				}
+				if($checkststus == true)
+					return ["Success"=>"Successfully Deleted Corresponding values On Dashboard"];
+			} 
+			else 
+			{
+				return ["Error"=>"Something Went To Wrong Try Again"];
+			}			
 		}
 
 	}
-	
-	
-	/*
-	 * Action for Add subscription for a user
-	 * value is Dashboard Id
-	 * Return JSON
-	 */
-	 
-	public function actionAddSubscription($id){	
-	 	
-		$model =  SubscriptionModel::find()->where(['eq_customer_id'=>\Yii::$app->user->id,'dashboard_id'=>$id])->One();
-		if(!$model)
-		{
-			$model = new SubscriptionModel();		
-		}
-		  $model->eq_customer_id  = \Yii::$app->user->id;
-		  $model->dashboard_id = $id;
-		  $model->created_at = date("Y-m-d H:i:s");
-		  $model->status = 1;
-		if($model->save())
-		{
-		   return ['Success' => "Subscription Is Added To This User Successfully"];			  
-		}
-		else { 
-		   return ['Error' => $model->getErrors()]; 
-		}	  		
-	}	
-	
-	
-	/*
-	 * Action for Cancel subscription for a user
-	 * value is Subscription Id
-	 * Return JSON
-	 */
-	 
-	public function actionCancelSubscription($subid){	
-				
-		$model =  SubscriptionModel::find()->where(['eq_customer_id'=>\Yii::$app->user->id,'subscription_id'=>$subid])->One();
-		$model->created_at = date("Y-m-d H:i:s");
-		$model->status = 2;
-			if($model->save())
-			{
-			return ['Success' => "Subscription Is Cancelled To This User Successfully"];			  
-			}
-			else { 
-			return ['Error' => $model->getErrors()]; 
-			}
-	  		
-	}	
-	
-	
-	
-	/*
-	 * Action for All Subscription Data of a Related user
-	 *  
-	 * Return JSON
-	 */
-	 
-	public function actionUserSubscription(){					
-		$model =  SubscriptionModel::find()->where(['eq_customer_id'=>\Yii::$app->user->id,'status'=>1])->All();	
-		if($model)
-		{
-		   return $model;			  
-		}
-		else { 
-		   return ['Error' => $model->getErrors()]; 
-		}	  		
-	}	
-	
-	/*
-	 * Action for All Subscription Data of a Related Dashboard
-	 * value is Dashboard Id 
-	 * Return JSON
-	 */
-	 
-	public function actionDashboardSubscription($id){					
-		$model =  SubscriptionModel::find()->where(['dashboard_id'=>$id,'status'=>1])->All();	
-		if($model)
-		{
-		   return $model;			  
-		}
-		else { 
-		   return ['Error' => $model->getErrors()]; 
-		}	  		
-	}
+
 }

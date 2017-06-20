@@ -311,6 +311,8 @@ class DashboardController extends Controller
 		$model = $this->findModel($id);
 		if($model->form_data!='')
 			$this->redirect(['edit-form','id'=>$id]);
+		if(isset($model->models))
+		{
 		$tablenames = unserialize($model->models);
 		$tables = [];
 		foreach($tablenames as $tablename){
@@ -319,6 +321,7 @@ class DashboardController extends Controller
 			$datamodel = DataModel::find()->where(['model_name'=>$tablename])->one();
 			$tables[$tablename]['attributes'] = unserialize($datamodel->attributes);
 			$tables[$tablename]['form_data'] = unserialize($datamodel->form_data);
+		}
 		}
 		if($post = \Yii::$app->request->post()){
 			//handle post data
@@ -330,7 +333,7 @@ class DashboardController extends Controller
 		else 
 		return 	$this->render('form_generator', [
                 'model' => $model,
-				'tables' => $tables,
+				'tables' => isset($tables)?($tables):'',
             ]);
 	}
 

@@ -121,11 +121,18 @@ $this->title = 'Form-Generator:'.$model->dashboard_name;
 							  <input type="text" class="form-control" id="id-default-value" name="tables[<?=$tab_name?>][fields][<?=$f_index?>][options][default_text]" value="<?=$field['options']['default_text']?>">
 							</div>
 							
+							<?php
+							if(isset($tables[$tab_name]['fields'][$f_index]['options']['radio_buttons']))
+							{?>
 							<div class="form-group radio-button" id="<?=$identifier?>_radio-button" <?=$field['field_type']=='radio-button'?"style='display:block'":"" ?>>
 							  <label for="radio-button">Radio Button</label>
-							  <input type="radio" class="form-control" id="id-radio-button" name="tables[<?=$tab_name?>][fields][<?=$f_index?>][options][radio-button]" value="<?=$field['options']['radio-button']?>">
+							  <input type="radio" class="form-control" id="id-radio-button" name="tables[<?=$tab_name?>][fields][<?=$f_index?>][options][radio_buttons]" value="<?=$field['options']['radio_buttons']?>">
 							</div>
-
+							<?php
+							}
+							?>
+							
+							
 							
 						</div>
 						<!-- FIELD TYPE OPTIONS -->
