@@ -135,7 +135,7 @@ class DashboardController extends Controller
 						 * Currently disabled to allow data only from wp
 						 */
 						
-						/*
+						
 						foreach($sheet as $header=>$data){
 							foreach($data as $key=>$d){
 								//eliminate the null keys
@@ -146,7 +146,7 @@ class DashboardController extends Controller
 							\Yii::$app->db->createCommand()
 								->insert($datamodel->model_name, $data)->execute();
 						} 
-						*/
+						
 					}
 					$model->models = serialize($tables);
 					$model->save();
@@ -269,8 +269,8 @@ class DashboardController extends Controller
 				$params = json_encode([
 				"credentialType"=>"Basic",
 					"basicCredentials"=>[
-					"username"=>"eqvision",
-					"password"=>"Al@inno17!",
+					"username"=>"eqdev3sqlserver",
+					"password"=>"dev3@eqvision",
 					]
 				]);
 				$respns_patch = json_decode($workspace->doCurl_POST($patchurl,$access_key,$params,"application/json","PATCH"));
