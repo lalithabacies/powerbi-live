@@ -64,6 +64,7 @@ class DashboardController extends ActiveController
 			'access_key'	 =>$dashboard->workspace->collection->AppKey,
 			'workspace_id'	 =>$dashboard->workspace->workspace_id,
 			'report_id'	 	 =>$dashboard->report->report_guid,
+			'form_data'		 =>$dashboard->form_data,
 		];  
 		return $embed;
 	}

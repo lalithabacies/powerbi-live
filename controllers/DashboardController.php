@@ -497,9 +497,9 @@ class DashboardController extends Controller
 			$attributes = serialize($attributes);
 			//**Naming convention check starts ..sheet column
 			$checkTableName = $this->checkNamingConvention($key,$datamodel->model_name,$attributes);
-			if ($checkTableName['sheet']['status']=='error'){
+			/* if ($checkTableName['sheet']['status']=='error'){
 				$errMsg.= "$key is not a valid SheetName, it should Alphabetic and Singular only."."\r\n";
-			}
+			} */
 			if ($checkTableName['column']['status']=='error'){
 				$errMsg.= "$key have invalid column: ".$checkTableName['column']['msg']." it should Alphabetic only."."\r\n";
 			}
