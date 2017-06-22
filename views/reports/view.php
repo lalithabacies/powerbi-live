@@ -60,7 +60,7 @@ use yii\widgets\ActiveForm;
 
 
 <div id="reportContainer"  style="height:530px"></div>
-    <script src="http://localhost/powerbi/web/js/node_modules/powerbi-client/dist/powerbi.min.js"></script>
+    <script src="http://eqvision.azurewebsites.net/web/js/node_modules/powerbi-client/dist/powerbi.min.js"></script>
     <script>
         (function () {
 			var models = window['powerbi-client'].models;
