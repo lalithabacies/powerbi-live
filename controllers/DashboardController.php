@@ -197,7 +197,7 @@ class DashboardController extends Controller
 			$curl_file = curl_file_create(\Yii::$app->basePath.'/web/uploads/'.$uploadedFile->name,'pbix',$uploadedFile->baseName);
 			$params = ['file' => $curl_file];
             $response	= json_decode($workspace->doCurl_POST($end_url,$access_key,$params,"multipart/form-data","POST"));
-			//print_r($response);die;
+			print_r($response);die;
 			if(isset($response->error->message)){
 				//flash error message
 				Yii::$app->session->setFlash('some_error',  $response->error->message);
