@@ -52,6 +52,7 @@ $this->title = 'Form-Generator:'.$model->dashboard_name;
 			<?php 
 			$f_index = 0;
 			foreach($table['fields'] as $field){
+			if(isset($field['field_type'])){	
 			$field_name = preg_replace('/\s+/', '', $field['field_name']);
 			$identifier = "{$tab_name}_{$field_name}";	
 			?>
@@ -142,7 +143,11 @@ $this->title = 'Form-Generator:'.$model->dashboard_name;
 				</div>
 			</div>
 			<!-- FIELD DETAILS -->
-			<?php $f_index++; } ?>
+			<?php 
+			$f_index++; 
+			}
+			}			
+			?>
         </div>
 
 
