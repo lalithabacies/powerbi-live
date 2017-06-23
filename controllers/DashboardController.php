@@ -197,7 +197,9 @@ class DashboardController extends Controller
 			$curl_file = curl_file_create(\Yii::$app->basePath.'/web/uploads/'.$uploadedFile->name,'pbix',$uploadedFile->baseName);
 			$params = ['file' => $curl_file];
             $response	= json_decode($workspace->doCurl_POST($end_url,$access_key,$params,"multipart/form-data","POST"));
-			print_r($response);die;
+			echo '<pre>';
+			print_r($response);
+			echo '</pre>';
 			if(isset($response->error->message)){
 				//flash error message
 				Yii::$app->session->setFlash('some_error',  $response->error->message);
@@ -213,6 +215,9 @@ class DashboardController extends Controller
 			//if use above dataset_id the datasource response is Datasource ID missing.We are the below dataset for the next request.
 			$url = 'https://api.powerbi.com/v1.0/collections/'.$collection->collection_name.'/workspaces/'.$workspace->workspace_id.'/datasets';
 			$respns_dtast = json_decode($workspace->doCurl_GET($url,$access_key));
+			echo '<pre>';
+			print_r($respns_dtast);
+			echo '</pre>';
 			if(isset($respns_dtast->error->message)){
 				//flash error message
 				Yii::$app->session->setFlash('some_error',  $respns_dtast->error->message);
@@ -229,6 +234,9 @@ class DashboardController extends Controller
 
 
 				$respns_ds_gw = json_decode($workspace->doCurl_GET($end_url,$access_key));
+				echo '<pre>';
+				print_r($respns_ds_gw);
+				echo '</pre>';
 				if(isset($respns_ds_gw->error->message)){
 					//flash error message
 					Yii::$app->session->setFlash('some_error',  $respns_ds_gw->error->message);
@@ -249,6 +257,10 @@ class DashboardController extends Controller
 				$url="https://api.powerbi.com/v1.0/collections/".$collection->collection_name."/workspaces/".$workspace->workspace_id."/reports";
 
 				$response = json_decode($workspace->doCurl_GET($url,$access_key));
+				echo '<pre>';
+				print_r($response);
+				echo '</pre>';
+				die;
 				foreach($response->value as $res){
 					if($res->datasetId == $datasets->id){
 					$reports  	= new Reports();
