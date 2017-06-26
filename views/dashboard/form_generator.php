@@ -88,7 +88,7 @@ $this->title = 'Form-Generator:'.$model->dashboard_name;
 						  <select class="form-control field_type select-options" name="tables[<?=$tab_name?>][fields][<?=$f_index?>][field_type]" id="<?=$identifier?>">
 							<!--<option value="">--Select Field Type--</option>-->
 							<option value="hidden">Hidden</option> <!-- No Secondary Options -->
-							<option value="text">Text Input</option> <!-- No Secondary Options -->
+							<option value="text" selected>Text Input</option> <!-- No Secondary Options -->
 							<option value="textarea">Text Area</option> <!-- No Secondary Options -->
 							<option value="date-input">Date Input</option> 
 							<option value="dropdown">DropDown List</option>
