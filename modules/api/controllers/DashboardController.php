@@ -70,6 +70,20 @@ class DashboardController extends ActiveController
 	}
 	
 	/*
+	 * Action for getting single dashboard Form data
+	 * Params: $id which is the dashboard id
+	 * Returns Json
+	 */
+	Public function actionFormdata($id){
+		//Return, array of collection name,access key, workspace id, report id
+		$dashboard 		= DashboardModel::findOne($id);
+		$form_data = [
+			'form_data'		 =>$dashboard->form_data,
+		];  
+		return $form_data;
+	}
+	
+	/*
 	 * Action for importing data to the dashboard
 	 * Params: $dashboard_id,$cutomer_id , file to be imported
 	 * Returns Json
