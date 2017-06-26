@@ -423,7 +423,7 @@ class DashboardController extends Controller
 	/**
 	*
 	* Clone the dashboard
-	* @return dashboard_name,description,collection_id,workspace_id,prefix
+	* @return dashboard_name,description,collection_id,workspace_id,prefix and models
 	*/
 	
 	public function actionCopyDashboard($id){
@@ -439,6 +439,7 @@ class DashboardController extends Controller
 			$dashboard->collection_id	= $model->collection_id;
 			$dashboard->workspace_id	= $model->workspace_id;
 			$dashboard->prefix			= $model->prefix;
+			$dashboard->models			= $model->models;
 			$dashboard->save();
 			return $this->redirect(['index']);
 		}
