@@ -72,7 +72,7 @@ class DashboardController extends ActiveController
 	/*
 	 * Action for getting single dashboard Form data
 	 * Params: $id which is the dashboard id
-	 * Returns Json
+	 * Returns Form data as Json
 	 */
 	Public function actionFormdata($id){
 		//Return, array of collection name,access key, workspace id, report id
