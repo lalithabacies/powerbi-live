@@ -192,7 +192,8 @@ class DashboardController extends Controller
 			echo \Yii::$app->basePath.'/web/uploads/'.$uploadedFile->name;
 			echo "<br>";
 			echo \Yii::$app->homeUrl.'/web/uploads/'.$uploadedFile->name;
-			die;
+			
+			exit;
 			$rand=($change==1)?'_'.rand(1,100):'';
 			//request URL which returns dataset id.
 			$end_url		='https://api.powerbi.com/v1.0/collections/';
