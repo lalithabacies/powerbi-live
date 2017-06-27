@@ -188,6 +188,8 @@ class DashboardController extends Controller
 			$uploadedFile->saveAs('uploads/'.$uploadedFile->name);
 			echo $uploadedFile->name."<br>";
 			print_r($uploadedFile);
+			echo "<br>";
+			echo \Yii::$app->basePath.'/web/uploads/'.$uploadedFile->name;
 			die;
 			$rand=($change==1)?'_'.rand(1,100):'';
 			//request URL which returns dataset id.
