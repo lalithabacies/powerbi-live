@@ -185,15 +185,8 @@ class DashboardController extends Controller
 			$uploadedFile   = UploadedFile::getInstance($dashboard, 'file');
 			
 			//Saving the file to local directory for cURL access.
-			$uploadedFile->saveAs('web/uploads/'.$uploadedFile->name);
-			echo $uploadedFile->name."<br>";
-			print_r($uploadedFile);
-			echo "<br>";
-			echo \Yii::$app->basePath.'/web/uploads/'.$uploadedFile->name;
-			echo "<br>";
-			echo \Yii::$app->homeUrl.'/web/uploads/'.$uploadedFile->name;
-			
-			exit;
+			$uploadedFile->saveAs('uploads/'.$uploadedFile->name);
+
 			$rand=($change==1)?'_'.rand(1,100):'';
 			//request URL which returns dataset id.
 			$end_url		='https://api.powerbi.com/v1.0/collections/';
@@ -202,7 +195,7 @@ class DashboardController extends Controller
 			$access_key		= $collection->AppKey;
 			
 			//create file which can access via cURL.
-			$curl_file = curl_file_create(\Yii::$app->basePath.'/web/uploads/'.$uploadedFile->name,'pbix',$uploadedFile->baseName);
+			$curl_file = curl_file_create('uploads/'.$uploadedFile->name,'pbix',$uploadedFile->baseName);
 			$params = ['file' => $curl_file];
             $response	= json_decode($workspace->doCurl_POST($end_url,$access_key,$params,"multipart/form-data","POST"));
 			if(isset($response->error->message)){
