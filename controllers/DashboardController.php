@@ -185,7 +185,7 @@ class DashboardController extends Controller
 			$uploadedFile   = UploadedFile::getInstance($dashboard, 'file');
 			
 			//Saving the file to local directory for cURL access.
-			$uploadedFile->saveAs('uploads/'.$uploadedFile->name);
+			$uploadedFile->saveAs('http://eqvision.azurewebsites.net/web/uploads/'.$uploadedFile->name);
 			echo $uploadedFile->name."<br>";
 			print_r($uploadedFile);
 			echo "<br>";
