@@ -186,6 +186,9 @@ class DashboardController extends Controller
 			
 			//Saving the file to local directory for cURL access.
 			$uploadedFile->saveAs('uploads/'.$uploadedFile->name);
+			echo $uploadedFile->name."<br>";
+			print_r($uploadedFile);
+			die;
 			$rand=($change==1)?'_'.rand(1,100):'';
 			//request URL which returns dataset id.
 			$end_url		='https://api.powerbi.com/v1.0/collections/';
