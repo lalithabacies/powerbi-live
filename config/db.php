@@ -3,8 +3,8 @@
 return [
     'class' => 'yii\db\Connection',
     ////'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-	'dsn' => 'sqlsrv:Server=eqdev3sqlserver.database.windows.net;Database=eqdev3',
-    'username' => 'eqdev3sqlserver',
-    'password' => 'dev3@eqvision',
+	'dsn' => 'sqlsrv:Server=eqvisions1.database.windows.net;Database=eqvision003',
+    'username' => 'eqvisionadmin',
+    'password' => 'SiC7HYhsE6',
     'charset' => 'utf8',
 ];
