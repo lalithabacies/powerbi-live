@@ -163,9 +163,7 @@ class DashboardController extends Controller
         }
     }
 	
-	public function actionHtml(){
-		return 'Hi';
-	}
+
 	
 	/**
 	*
